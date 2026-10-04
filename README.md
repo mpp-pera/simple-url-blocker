@@ -29,3 +29,7 @@ Matching ignores upper/lower case. When you add `https://www.example.com`, the `
 - Tabs that are already open are checked whenever the list changes.
 - Single-page apps that change the URL without loading a new page (Reddit, YouTube, …) are caught with `webNavigation.onHistoryStateUpdated`.
 - The list lives in `chrome.storage.local` under `blockedList`, with a maximum of 1000 entries.
+
+## License
+
+[MIT](LICENSE)
