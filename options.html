@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>URL Blocker – Blocked list</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      main {
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 32px 16px 64px;
+        display: grid;
+        gap: 16px;
+      }
+      header {
+        display: grid;
+        gap: 6px;
+        margin-bottom: 4px;
+      }
+      header .brand img {
+        width: 36px;
+        height: 36px;
+      }
+      header .brand h1 {
+        font-size: 22px;
+      }
+      h2 {
+        font-size: 14px;
+        font-weight: 650;
+        margin-bottom: 8px;
+      }
+      .card form {
+        display: grid;
+        gap: 6px;
+      }
+      .list-head {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+      .list-head h2 {
+        margin: 0;
+      }
+      .list-head input {
+        max-width: 220px;
+        margin-left: auto;
+        padding: 6px 10px;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 8px 8px 12px;
+        border-top: 1px solid var(--border);
+      }
+      li:first-child {
+        border-top: 0;
+      }
+      li:hover {
+        background: var(--surface-2);
+      }
+      li .mono {
+        flex: 1;
+      }
+      li button {
+        padding: 4px 10px;
+        color: var(--muted);
+        font-weight: 500;
+      }
+      li button:hover {
+        color: var(--accent);
+        background: var(--accent-soft);
+      }
+      .empty {
+        padding: 28px 12px;
+        text-align: center;
+        color: var(--muted);
+        border: 1px dashed var(--border);
+        border-radius: 8px;
+      }
+      .test-result {
+        margin-top: 8px;
+      }
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: 24px;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        max-width: calc(100% - 32px);
+        padding: 8px 8px 8px 16px;
+        border-radius: 10px;
+        background: var(--text);
+        color: var(--bg);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+      }
+      .toast span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .toast button {
+        background: transparent;
+        border-color: transparent;
+        color: var(--bg);
+        text-decoration: underline;
+        padding: 4px 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="brand">
+          <img src="icons/icon128.png" alt="" />
+          <h1>Blocked list</h1>
+        </div>
+        <p class="muted">
+          Any page whose address contains one of these entries is blocked. Matching ignores
+          upper/lower case. For example, <span class="mono">reddit.com/r/news</span> blocks
+          <span class="mono">https://old.reddit.com/r/news/top</span>.
+        </p>
+      </header>
+
+      <section class="card">
+        <h2>Add</h2>
+        <form id="add-form" autocomplete="off">
+          <div class="row">
+            <input type="text" id="add-input" placeholder="e.g. reddit.com/r/news" aria-label="Text to block" />
+            <button type="submit" class="primary">Block</button>
+          </div>
+          <p class="message" id="message" role="status">Tip: paste several entries at once, separated by spaces, commas or new lines.</p>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="list-head">
+          <h2>Blocked</h2>
+          <span class="pill" id="count">0</span>
+          <input type="search" id="filter" placeholder="Filter…" aria-label="Filter list" />
+        </div>
+        <ul id="list" hidden></ul>
+        <div class="empty" id="empty">Nothing blocked yet. Add your first entry above.</div>
+      </section>
+
+      <section class="card">
+        <h2>Test a URL</h2>
+        <input type="text" id="test-input" placeholder="Paste a URL to check if it would be blocked" aria-label="URL to test" style="width: 100%" />
+        <p class="message test-result" id="test-result"></p>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" hidden>
+      <span id="toast-text"></span>
+      <button id="toast-undo">Undo</button>
+    </div>
+
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

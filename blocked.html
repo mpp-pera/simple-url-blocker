@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blocked</title>
+    <link rel="icon" href="icons/icon32.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px 16px;
+      }
+      main {
+        width: 100%;
+        max-width: 520px;
+        text-align: center;
+        display: grid;
+        justify-items: center;
+        gap: 14px;
+      }
+      .badge {
+        width: 84px;
+        height: 84px;
+        border-radius: 24px;
+        display: grid;
+        place-items: center;
+        background: var(--accent-soft);
+        margin-bottom: 6px;
+      }
+      .badge img {
+        width: 56px;
+        height: 56px;
+      }
+      h1 {
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .url {
+        width: 100%;
+        padding: 10px 14px;
+        border-radius: 8px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        text-align: left;
+        max-height: 8.5em;
+        overflow: auto;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="badge"><img src="icons/icon128.png" alt="" /></div>
+      <h1 id="title">This URL is blocked</h1>
+      <p class="muted" id="reason">It matches an entry in your block list.</p>
+      <div class="url mono" id="url" hidden></div>
+      <div class="actions">
+        <button class="primary" id="back">Go back</button>
+        <button id="manage">Edit blocked list</button>
+        <button id="continue" hidden>Continue to page</button>
+      </div>
+    </main>
+    <script type="module" src="blocked.js"></script>
+  </body>
+</html>

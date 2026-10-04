@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>URL Blocker</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        width: 340px;
+        padding: 14px;
+        display: grid;
+        gap: 12px;
+      }
+      .current {
+        display: grid;
+        gap: 10px;
+      }
+      .current .label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--muted);
+      }
+      .current .status {
+        font-size: 13px;
+      }
+      .current .status.blocked {
+        color: var(--accent);
+      }
+      form {
+        display: grid;
+        gap: 6px;
+      }
+      .manage {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="brand">
+      <img src="icons/icon48.png" alt="" />
+      <h1>URL Blocker</h1>
+      <span class="pill" id="count">0 blocked</span>
+    </header>
+
+    <section class="card current" id="current" hidden>
+      <div>
+        <div class="label">This site</div>
+        <div class="mono" id="current-host"></div>
+      </div>
+      <div class="status" id="current-status" hidden></div>
+      <button class="primary" id="block-current">Block this site</button>
+    </section>
+
+    <form id="add-form" class="card" autocomplete="off">
+      <div class="row">
+        <input type="text" id="add-input" placeholder="e.g. reddit.com/r/news" aria-label="Text to block" />
+        <button type="submit" class="primary">Block</button>
+      </div>
+      <p class="message" id="message" role="status"></p>
+    </form>
+
+    <button class="manage" id="manage">Edit blocked list</button>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>
