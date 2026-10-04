@@ -1,4 +1,4 @@
-# URL Blocker
+# Simple URL Blocker
 
 A simple Chrome extension that blocks any page whose address contains text from your block list.
 

@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "URL Blocker",
+  "name": "Simple URL Blocker",
   "version": "1.0.0",
   "description": "Block any page whose address contains text from your block list.",
   "permissions": ["declarativeNetRequest", "storage", "webNavigation"],
@@ -10,7 +10,7 @@
     "type": "module"
   },
   "action": {
-    "default_title": "URL Blocker",
+    "default_title": "Simple URL Blocker",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon16.png",
